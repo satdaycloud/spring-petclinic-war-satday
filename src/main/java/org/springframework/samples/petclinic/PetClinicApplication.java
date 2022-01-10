@@ -18,17 +18,26 @@ package org.springframework.samples.petclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+// spring-war-satday
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
  * PetClinic Spring Boot Application.
  *
  * @author Dave Syer
+ * @author HeeJung Chae - modified to deploy a spring boot WAR into a tomcat server
  *
  */
-@SpringBootApplication
-public class PetClinicApplication {
+@SpringBootApplication(proxyBeanMethods = false)
+public class PetClinicApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(PetClinicApplication.class);
+	}
+
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(PetClinicApplication.class, args);
 	}
 

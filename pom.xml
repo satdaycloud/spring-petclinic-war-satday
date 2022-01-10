@@ -12,6 +12,8 @@
   </parent>
   <name>petclinic</name>
 
+  <packaging>war</packaging>
+
   <properties>
 
     <!-- Generic properties -->
